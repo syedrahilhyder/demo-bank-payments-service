@@ -1,16 +1,7 @@
-# demo-bank-payments-service
+# demo-bank-payments-service (v2)
 
-Payments orchestration service.
-
-Responsibilities:
-- Initiate payments
-- Call account-service (debit)
-- Publish PaymentInitiated & PaymentFinalized events
-- Act as main orchestrator for demo flows
-
-Tech:
-- Spring Boot 3
-- Java 21
-- Postgres
-- Flyway
-- Kafka producer
+A more insane payments service:
+- Multiple payment types (local, international, utility)
+- Internal pipeline + validators + strategy selection
+- REST calls to limits-service + account-service
+- Kafka produce initiated/finalized events, consume AML results
