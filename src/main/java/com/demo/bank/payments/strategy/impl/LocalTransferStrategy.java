@@ -6,7 +6,7 @@ import com.demo.bank.payments.strategy.PaymentStrategy;
 import org.springframework.stereotype.Component;
 
 @Component
-public class LocalTransferStrategy implements PaymentStrategy {
+public class  LocalTransferStrategy implements PaymentStrategy {
 
   private final AccountConnector account;
 
@@ -18,6 +18,7 @@ public class LocalTransferStrategy implements PaymentStrategy {
   public void preProcess(Payment p) {
     p.attachHold(account.placeHold(p.getFromAccount(), p.getAmountMinor(), "LOCAL_PREAUTH"));
     p.markAmlPending();
+    inLT();
   }
 
   @Override
@@ -25,4 +26,6 @@ public class LocalTransferStrategy implements PaymentStrategy {
 
   @Override
   public void postProcess(Payment p) {}
+
+  public void inLT() {}
 }

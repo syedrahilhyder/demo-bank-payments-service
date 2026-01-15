@@ -18,6 +18,7 @@ public class InternationalTransferStrategy implements PaymentStrategy {
   public void preProcess(Payment p) {
     p.attachHold(account.placeHold(p.getFromAccount(), p.getAmountMinor(), "INTL_PREAUTH"));
     p.markAmlPending();
+    inIT();
   }
 
   @Override
@@ -25,4 +26,8 @@ public class InternationalTransferStrategy implements PaymentStrategy {
 
   @Override
   public void postProcess(Payment p) {}
+
+  public void inIT() {
+
+  }
 }
